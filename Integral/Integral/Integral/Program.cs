@@ -7,13 +7,14 @@
             Console.Write("Please, enter number of iterations N=");
             int N = Console.Read();
 
-            double[,] points = MonteCarlo.RandomPointsInMyArea(N);
+            Point[] points = Methods.ThrowPoints(N);
 
-            double integralResult = MonteCarlo.MonteCarloMethod(points);
 
-            Console.WriteLine("Monte-Carlo method's result: ", integralResult);
-            Console.WriteLine("The difference between resice result and MCm result: ", Math.Abs(integralResult - 1/126));
 
+            //Console.WriteLine("Monte-Carlo mean method's result: ", result);
+            //Console.WriteLine("The difference between accurate result and MCmm result: ", Math.Abs(result - 1/126));
+
+            double geomResult = Methods.GeometricMethod(points);
         }
     }
 }

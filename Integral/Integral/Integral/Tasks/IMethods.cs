@@ -7,16 +7,22 @@
             List<Point> points = new();
             var rand = new Random();
 
-            for (int i = 0; i < N; i++)
+            while (points.Count() != N)
             {
-                points.Add(new Point()
-                {
-                    Xc = rand.NextDouble(),
-                    Yc = rand.NextDouble(),
-                    Zc = rand.NextDouble()
-                });
-            }
+                double x = rand.NextDouble();
+                double y = rand.NextDouble();
+                double z = rand.NextDouble();
 
+                if (x <= y && y <= z)
+                {
+                    points.Add(new Point()
+                    {
+                        Xc = x,
+                        Yc = y,
+                        Zc = z
+                    });
+                }
+            }
             return points;
         }
 
@@ -26,13 +32,13 @@
 
             foreach (Point point in points)
             {
-                if (point.Zc <= point.Xc * point.Xc * point.Yc * point.Yc)
+                if (point.Zc <=  )
                 {
                     pointsInMyArea = pointsInMyArea + 1;
                 }
             }
 
-            double integral = Convert.ToDouble(pointsInMyArea / points.Count);
+            double integral = Convert.ToDouble(pointsInMyArea / points.Count());
             return integral;
         }
 
@@ -43,13 +49,20 @@
             List<Point> points = new();
             var rand = new Random();
 
-            for (int i = 0; i < N; i++)
+            while (points.Count() != N)
             {
-                points.Add(new Point() {
-                    Xc = rand.NextDouble(),
-                    Yc = rand.NextDouble(),
-                    Zc = default
-                });
+                double x = rand.NextDouble();
+                double y = rand.NextDouble();
+
+                if (x <= y)
+                {
+                    points.Add(new Point()
+                    {
+                        Xc = x,
+                        Yc = y,
+                        Zc = default
+                    });
+                }
             }
 
             foreach (Point x in points)

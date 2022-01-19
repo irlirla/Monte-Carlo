@@ -8,14 +8,20 @@
             var rand = new Random();
             List<Point> points = new();
 
-            for (int i = 0; i < N; i++)
+            while (points.Count() != N)
             {
-                points.Add(new Point()
+                double x = rand.NextDouble();
+                double y = rand.NextDouble();
+
+                if (x <= y)
                 {
-                    Xc = rand.NextDouble(),
-                    Yc = rand.NextDouble(),
-                    Zc = default
-                });
+                    points.Add(new Point()
+                    {
+                        Xc = x,
+                        Yc = y,
+                        Zc = default
+                    });
+                }
             }
 
             foreach (Point x in points)
@@ -33,14 +39,21 @@
             var rand = new Random();
             List<Point> points = new();
 
-            for (int i = 0; i < N; i++)
+            while (points.Count() != N)
             {
-                points.Add(new Point()
+                double x = rand.NextDouble();
+                double y = rand.NextDouble();
+                double z = rand.NextDouble();
+
+                if (x <= y)
                 {
-                    Xc = rand.NextDouble(),
-                    Yc = rand.NextDouble(),
-                    Zc = rand.NextDouble()
-                });
+                    points.Add(new Point()
+                    {
+                        Xc = x,
+                        Yc = y,
+                        Zc = z
+                    });
+                }
             }
 
             var required = (DateTime.Now - start)/N;

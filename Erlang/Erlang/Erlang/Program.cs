@@ -57,10 +57,10 @@ namespace Erlang
             Upoints[0].Y = 0.0f;
             Upoints[N+1].X = 1.0f;
             Upoints[N+1].Y = 1.0f;
-            Upoints.Sort();
+            Upoints.OrderBy(x => x.X);
 
             float Sherman = 0;
-            Console.Write("Please, enter value of alpha= "); //0.95f
+            Console.Write("Please, enter value of alpha= "); //0.05f
             float alpha = float.Parse(Console.ReadLine());
 
             for (int i = 1; i <= N ; i++)
@@ -69,7 +69,7 @@ namespace Erlang
             }
             Sherman = Sherman / 2;
 
-            Console.Write($"Please, enter the critical value of Sherman statistics at a={alpha} and N={N}: ");
+            Console.Write($"Please, enter the critical value of Sherman statistics at 1-a={1 - alpha} and N={N}: ");
             float ShermanC = float.Parse(Console.ReadLine());
 
             if (Sherman < ShermanC)
@@ -81,7 +81,7 @@ namespace Erlang
                 Console.WriteLine("The sample doesn't correspond to the distribution.");
             }
 
-            //float ShermanN = Convert.ToSingle((Sherman - Math.Pow(N / (N + 1), N + 1)) / ((Math.Pow(2 * N, N + 2) + N * Math.Pow(N - 1, N + 2)) / (N + 2) * Math.Pow(N + 1, N + 2) - Math.Pow(N / (N + 1), 2 * N + 2)));
+            //float ShermanN = Convert.ToSingle((Sherman - Math.Pow(N / (N + 1), N + 1)) / Math.Sqrt(((Math.Pow(2 * N, N + 2) + N * Math.Pow(N - 1, N + 2)) / (N + 2) * Math.Pow(N + 1, N + 2) - Math.Pow(N / (N + 1), 2 * N + 2))));
 
         }
     }

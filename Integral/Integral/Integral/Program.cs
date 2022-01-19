@@ -6,7 +6,7 @@ namespace Integral
     {
         static void Main()
         {
-            double iAccurate = 0.1111111111111;
+            double iAccurate = 0.0079365;
             Console.WriteLine("Please, choose:\n1. I want to enter the number of iterations N.\n2. I want to enter the probability error.");
             string answer = Console.ReadLine();
 
@@ -57,7 +57,7 @@ namespace Integral
                 Console.WriteLine("Please, enter desired probability error: ");
                 double R = double.Parse(Console.ReadLine());
 
-                int NMM = Convert.ToInt32((0.04 - 0.1111111*0.1111111)*(0.6745 * 0.6745 / (R * R)));
+                int NMM = Convert.ToInt32((0.00181818 - iAccurate*iAccurate)*(0.6745 * 0.6745 / (R * R)));
                 int NGM = Convert.ToInt32((iAccurate - iAccurate*iAccurate) * (0.6745 * 0.6745 / (R * R)));
 
                 (double, double) meanResult = IMethods.MeanMethod(NMM);

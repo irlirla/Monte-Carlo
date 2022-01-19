@@ -2,43 +2,48 @@
 {
     public interface ITime
     {
-        public static double MMTime()
+        public static double MMTime(int N)
         {
             DateTime start = DateTime.Now;
             var rand = new Random();
+            List<Point> points = new();
 
-            Point point = new Point()
+            for (int i = 0; i < N; i++)
             {
-                Xc = rand.NextDouble(),
-                Yc = rand.NextDouble(),
-                Zc = default
-            };
+                points.Add(new Point()
+                {
+                    Xc = rand.NextDouble(),
+                    Yc = rand.NextDouble(),
+                    Zc = default
+                });
+            }
 
-            point.Zc = point.Xc * point.Xc * point.Yc * point.Yc;
+            foreach (Point x in points)
+            {
+                x.Zc = x.Xc * x.Xc * x.Yc * x.Yc;
+            }
 
-            var required = DateTime.Now - start;
+            var required = (DateTime.Now - start)/N;
             return required.TotalMilliseconds/1000;
         }
 
-        public static double GMTime()
+        public static double GMTime(int N)
         {
             DateTime start = DateTime.Now;
             var rand = new Random();
-            int pointsInMyArea = default;
+            List<Point> points = new();
 
-            Point point = new Point()
+            for (int i = 0; i < N; i++)
             {
-                Xc = rand.NextDouble(),
-                Yc = rand.NextDouble(),
-                Zc = rand.NextDouble()
-            };
-
-            if (point.Zc <= point.Xc * point.Xc * point.Yc * point.Yc)
-            {
-                pointsInMyArea = pointsInMyArea + 1;
+                points.Add(new Point()
+                {
+                    Xc = rand.NextDouble(),
+                    Yc = rand.NextDouble(),
+                    Zc = rand.NextDouble()
+                });
             }
 
-            var required = DateTime.Now - start;
+            var required = (DateTime.Now - start)/N;
             return required.TotalMilliseconds/1000;
         }
     }

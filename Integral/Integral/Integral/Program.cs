@@ -36,10 +36,10 @@ namespace Integral
                 double RGM = 0.6745 * Math.Sqrt(DispersionGM / N);
                 Console.WriteLine($"\nThe probability error of Mean Method is {RMM} and of Geometric Method is {RGM}.");
 
-                Console.WriteLine($"The efficienty of Mean Method is {meanResult.Item2 * ITime.MMTime()}.");
-                Console.WriteLine($"The efficienty of Geometric Method is {DispersionGM * ITime.GMTime()}.");
+                Console.WriteLine($"The efficienty of Mean Method is {meanResult.Item2 * ITime.MMTime(N)}.");
+                Console.WriteLine($"The efficienty of Geometric Method is {DispersionGM * ITime.GMTime(N)}.");
 
-                if (meanResult.Item2 * ITime.MMTime() > DispersionGM * ITime.GMTime())
+                if (meanResult.Item2 * ITime.MMTime(N) > DispersionGM * ITime.GMTime(N))
                 {
                     Console.WriteLine("So the Mean Method is more efficient.");
                 }
@@ -48,7 +48,9 @@ namespace Integral
                     Console.WriteLine("So the Geometric Method is more efficient.");
                 }
 
-                Console.WriteLine($"The difference(%) between methods efficienty is {Math.Abs(meanResult.Item2 * ITime.MMTime() / (DispersionGM * ITime.GMTime()))*100}");
+                Console.WriteLine($"The difference(%) between methods efficienty is {Math.Abs(meanResult.Item2 * ITime.MMTime(N) / (DispersionGM * ITime.GMTime(N)))*100}");
+
+                Console.ReadKey();
             }
             else if (answer is "2")
             {
@@ -75,10 +77,10 @@ namespace Integral
                 double DispersionGM = geomResult - geomResult * geomResult;
                 Console.WriteLine($"Dispersion of Geometric Method is {DispersionGM}.");
 
-                Console.WriteLine($"\nThe efficienty of Mean Method is {meanResult.Item2 * ITime.MMTime()}.");
-                Console.WriteLine($"The efficienty of Geometric Method is {DispersionGM * ITime.GMTime()}.");
+                Console.WriteLine($"\nThe efficienty of Mean Method is {meanResult.Item2 * ITime.MMTime(NMM)}.");
+                Console.WriteLine($"The efficienty of Geometric Method is {DispersionGM * ITime.GMTime(NGM)}.");
 
-                if (meanResult.Item2 * ITime.MMTime() > DispersionGM * ITime.GMTime())
+                if (meanResult.Item2 * ITime.MMTime(NMM) > DispersionGM * ITime.GMTime(NGM))
                 {
                     Console.WriteLine("So the Mean Method is more efficient.");
                 }
@@ -87,13 +89,17 @@ namespace Integral
                     Console.WriteLine("So the Geometric Method is more efficient.");
                 }
 
-                Console.WriteLine($"The difference(%) between methods efficienty is {Math.Abs(meanResult.Item2 * ITime.MMTime() / (DispersionGM * ITime.GMTime())) * 100}");
+                Console.WriteLine($"The difference(%) between methods efficienty is {Math.Abs(meanResult.Item2 * ITime.MMTime(NMM) / (DispersionGM * ITime.GMTime(NGM))) * 100}");
+
+                Console.ReadKey();
             }
             else
             {
                 while (answer is not "1" || answer is not "2")
                 {
                     Console.WriteLine("Please, choose 1 or 2 option.");
+                    Console.ReadKey();
+                    break;
                 }
             };
         }

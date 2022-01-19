@@ -47,6 +47,8 @@ namespace Integral
                 {
                     Console.WriteLine("So the Geometric Method is more efficient.");
                 }
+
+                Console.WriteLine($"The difference(%) between methods efficienty is {Math.Abs(meanResult.Item2 * ITime.MMTime() / (DispersionGM * ITime.GMTime()))*100}");
             }
             else if (answer is "2")
             {
@@ -84,6 +86,8 @@ namespace Integral
                 {
                     Console.WriteLine("So the Geometric Method is more efficient.");
                 }
+
+                Console.WriteLine($"The difference(%) between methods efficienty is {Math.Abs(meanResult.Item2 * ITime.MMTime() / (DispersionGM * ITime.GMTime())) * 100}");
             }
             else
             {

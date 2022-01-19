@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integrall", "Integrall\Integrall.csproj", "{7D162B90-7B1C-462C-B981-529C44584E66}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Erlang", "Erlang\Erlang.csproj", "{B9CEACB4-19FB-44FD-9394-14F5A9270BE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7D162B90-7B1C-462C-B981-529C44584E66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D162B90-7B1C-462C-B981-529C44584E66}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D162B90-7B1C-462C-B981-529C44584E66}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D162B90-7B1C-462C-B981-529C44584E66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9CEACB4-19FB-44FD-9394-14F5A9270BE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9CEACB4-19FB-44FD-9394-14F5A9270BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9CEACB4-19FB-44FD-9394-14F5A9270BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9CEACB4-19FB-44FD-9394-14F5A9270BE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D8F99BB2-B4C8-4052-8609-F642FF296F03}
+		SolutionGuid = {10970851-50FB-4FA4-B0D9-C614C0417C7F}
 	EndGlobalSection
 EndGlobal

@@ -5,6 +5,7 @@
         public double Xc { get; set; }
         public double Yc { get; set; }
         public double Zc { get; set; }
+        public double Fc { get; set; }
     }
 
 }

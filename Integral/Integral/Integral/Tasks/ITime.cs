@@ -12,21 +12,23 @@
             {
                 double x = rand.NextDouble();
                 double y = rand.NextDouble();
+                double z = rand.NextDouble();
 
-                if (x <= y)
+                if (x <= y && y <= z)
                 {
                     points.Add(new Point()
                     {
                         Xc = x,
                         Yc = y,
-                        Zc = default
+                        Zc = z,
+                        Fc = default
                     });
                 }
             }
 
             foreach (Point x in points)
             {
-                x.Zc = x.Xc * x.Xc * x.Yc * x.Yc;
+                x.Fc = x.Xc * x.Xc * x.Yc * x.Yc;
             }
 
             var required = (DateTime.Now - start)/N;
@@ -44,14 +46,16 @@
                 double x = rand.NextDouble();
                 double y = rand.NextDouble();
                 double z = rand.NextDouble();
+                double f = rand.NextDouble();
 
-                if (x <= y)
+                if (x <= y && y <= z)
                 {
                     points.Add(new Point()
                     {
                         Xc = x,
                         Yc = y,
-                        Zc = z
+                        Zc = z,
+                        Fc = f
                     });
                 }
             }

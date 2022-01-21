@@ -25,50 +25,72 @@ namespace Erlang
             int N = int.Parse(Console.ReadLine());
 
             List<Point> points = new();
+            List<double> xs = new();
+            List<double> ys = new();
             var rand = MTRandom.Create();
 
             for (int i = 0; i < N; i++)
             {
+                double x = rand.NextSingle();
+                double y = rand.NextSingle();
+                double xx = -Math.Log(x) / la;
+                double yy = -Math.Log(y) / mu;
+                xs.Add(xx);
+                ys.Add(yy);
+
                 points.Add(new Point()
                 {
-                    X = Convert.ToSingle(rand.NextDouble() * rand.Next()),
+                    X = xx + yy,
                     Y = default
                 });
             }
 
-            foreach (Point point in points)
+            //foreach (Point point in points)
+            //{
+            //    point.Y = mu * la * (Math.Exp(-mu * point.X) - Math.Exp(-la * point.X)) / (la - mu);
+            //}
+
+            const string file = "Points.txt";
+
+            using (StreamWriter sw = new StreamWriter(file, true))
             {
-                point.Y = Convert.ToSingle(mu * la * (Math.Exp(-mu * point.X) - Math.Exp(-la * point.Y)) / (la - mu));
+                foreach (Point point in points)
+                {
+                    sw.WriteLine($"{point.X}");
+                }
             }
 
-            List<Point> Upoints = new();
+            List<double> Epoints = new();
+            foreach (Point point in points)
+            {
+                Epoints.Add(Distributions.ErlangToRavn(point.X, la, mu));
+            }
+
+            List<double> Upoints = new();
 
             for (int i = 0; i <= N + 1; i++)
             {
-                Upoints.Add(new Point());
+                Upoints.Add(new double());
             }
-            
+
             for (int i = 1; i <= N; i++)
             {
-                Upoints[i].X = points[i - 1].X;
-                Upoints[i].Y = points[i - 1].Y;
+                Upoints[i] = Epoints[i - 1];
             }
-            Upoints[0].X = 0.0f;
-            Upoints[0].Y = 0.0f;
-            Upoints[N+1].X = 1.0f;
-            Upoints[N+1].Y = 1.0f;
-            Upoints.OrderBy(x => x.X);
+            Upoints[0] = 0.0d;
+            Upoints[N + 1] = 1.0d;
+            Upoints.Sort();
 
-            float Sherman = 0;
+            double Sherman = 0;
             Console.Write("Please, enter value of alpha= "); //0.05f
             float alpha = float.Parse(Console.ReadLine());
 
-            for (int i = 1; i <= N ; i++)
+            for (int i = 1; i <= N; i++)
             {
-                Sherman = Sherman + Math.Abs(Upoints[i].X - Upoints[i-1].X - 1 / (N+1));
+                Sherman = Sherman + Math.Abs(Upoints[i] - Upoints[i - 1] - 1 / (N + 1));
             }
             Sherman = Sherman / 2;
-
+            Console.WriteLine($"Shermans statistics is {Sherman}.");
             Console.Write($"Please, enter the critical value of Sherman statistics at 1-a={1 - alpha} and N={N}: ");
             float ShermanC = float.Parse(Console.ReadLine());
 
